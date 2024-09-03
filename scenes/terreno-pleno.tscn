@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv64o1mu87eqm"]
+[gd_scene load_steps=15 format=3 uid="uid://cv64o1mu87eqm"]
 
 [ext_resource type="PackedScene" uid="uid://cvij5s2ro4xp2" path="res://assets/terreno-pleno.glb" id="1_cec4j"]
 [ext_resource type="PackedScene" uid="uid://3la0sot06u02" path="res://assets/rock1.glb" id="2_bx6fl"]
 [ext_resource type="PackedScene" uid="uid://dveygqt6n6m1k" path="res://assets/rock2.glb" id="3_8ct4f"]
 [ext_resource type="PackedScene" uid="uid://c6lc1sugex6tp" path="res://assets/rock3.glb" id="4_6nu8j"]
+[ext_resource type="PackedScene" uid="uid://bs5enaojdkv6u" path="res://scenes/bullet.tscn" id="6_tbcol"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="7_8gtgd"]
 
 [sub_resource type="Sky" id="Sky_q6hrt"]
@@ -486,6 +487,7 @@ shape = SubResource("BoxShape3D_ynwta")
 [node name="Player" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19398, 7.75245, 0)
 script = ExtResource("7_8gtgd")
+bullet_scene = ExtResource("6_tbcol")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00101662, -0.00298071, -0.00106427)

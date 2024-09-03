@@ -2,7 +2,7 @@ extends RigidBody3D
 
 @export var force_strength = 16.0
 @export var bullet_scene : PackedScene  # Referência para a cena do projétil
-@export var bullet_speed = 20.0  # Velocidade do projétil
+@export var bullet_speed = 60.0  # Velocidade do projétil
 
 func _ready():
 	# Verifica se bullet_scene está corretamente atribuído
