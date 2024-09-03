@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bs5enaojdkv6u"]
+
+[node name="bullet" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77666, 0)
