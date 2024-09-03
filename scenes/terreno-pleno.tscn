@@ -1,0 +1,494 @@
+[gd_scene load_steps=14 format=3 uid="uid://cv64o1mu87eqm"]
+
+[ext_resource type="PackedScene" uid="uid://cvij5s2ro4xp2" path="res://assets/terreno-pleno.glb" id="1_cec4j"]
+[ext_resource type="PackedScene" uid="uid://3la0sot06u02" path="res://assets/rock1.glb" id="2_bx6fl"]
+[ext_resource type="PackedScene" uid="uid://dveygqt6n6m1k" path="res://assets/rock2.glb" id="3_8ct4f"]
+[ext_resource type="PackedScene" uid="uid://c6lc1sugex6tp" path="res://assets/rock3.glb" id="4_6nu8j"]
+[ext_resource type="PackedScene" uid="uid://dflui7jo6hl8a" path="res://assets/player.glb" id="6_er2dc"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="7_8gtgd"]
+
+[sub_resource type="Sky" id="Sky_q6hrt"]
+
+[sub_resource type="Environment" id="Environment_vwvw5"]
+background_mode = 1
+background_color = Color(0.569108, 0.79036, 0.865276, 1)
+sky = SubResource("Sky_q6hrt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcbw5"]
+size = Vector3(27.164, 0.797302, 26.962)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey0f2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25vl6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynwta"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_otb6k"]
+size = Vector3(0.29686, 1.38217, 0.715271)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.576618, 0.817014, 0, -0.817014, 0.576618, -0.68368, 10.9028, 12.4858)
+
+[node name="Sun Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.227722, -0.973726, 0, 0.708593, 0.165716, 0.685882, -0.667861, -0.15619, 0.727713, 0, 7.25681, 15.8565)
+light_color = Color(1, 1, 0.8, 1)
+light_energy = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vwvw5")
+
+[node name="terreno-pleno" parent="." instance=ExtResource("1_cec4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40749, 0, -0.545815)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terreno-pleno"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terreno-pleno/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0858459, 0.0162659, -0.0296936)
+shape = SubResource("BoxShape3D_mcbw5")
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="rock1" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3272, 0.414917, -7.14601)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock1/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock2" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6989, 0.414917, -8.18599)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock2/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock3" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85368, 0.414917, -9.27511)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock3/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock11" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(0.818079, 0, 0.575105, 0, 1, 0, -0.575105, 0, 0.818079, -12.42, 0.414917, 2.60362)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock11/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock12" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(0.818079, 0, 0.575105, 0, 1, 0, -0.575105, 0, 0.818079, -12.5042, 0.414917, 1.39152)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock12/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock13" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(0.818079, 0, 0.575105, 0, 1, 0, -0.575105, 0, 0.818079, -12.439, 0.414917, 0.0144215)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock13/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock14" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(0.517355, 0, 0.855771, 0, 1, 0, -0.855771, 0, 0.517355, -10.6562, 0.414917, 6.93787)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock14/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock15" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(0.517355, 0, 0.855771, 0, 1, 0, -0.855771, 0, 0.517355, -11.2212, 0.414917, 5.86219)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock15/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock16" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(0.517355, 0, 0.855771, 0, 1, 0, -0.855771, 0, 0.517355, -11.7159, 0.414917, 4.30668)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock16/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock9" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1384, 0.414917, -3.10625)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock9/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock4" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76137, 0.414917, -10.3957)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock4/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock51" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.887317, 0, 0.46116, 0, 1, 0, -0.46116, 0, -0.887317, 6.71535, 0.414917, 10.0233)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock51"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock51/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock52" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.887317, 0, 0.46116, 0, 1, 0, -0.46116, 0, -0.887317, 5.40843, 0.414917, 10.6563)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock52"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock52/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock53" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.887317, 0, 0.46116, 0, 1, 0, -0.46116, 0, -0.887317, 4.15617, 0.414917, 11.2329)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock53"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock53/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock54" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.887317, 0, 0.46116, 0, 1, 0, -0.46116, 0, -0.887317, 2.67018, 0.414917, 11.7235)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock54"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock54/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock8" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0127, 0.414917, -4.53037)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock8/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock7" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7599, 0.414917, -5.78644)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock7/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock5" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69893, 0.414917, -11.186)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock5/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock6" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.36507, 0.414917, -11.929)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock6/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock42" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -3.3336, 0.414917, 11.645)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock42"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock42/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock43" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -4.49726, 0.414917, 11.2954)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock43"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock43/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock44" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -5.76253, 0.414917, 10.748)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock44"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock44/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock45" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, 1.09139, 0.414917, 11.8941)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock45"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock45/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock46" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -7.11977, 0.414917, 9.96905)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock46"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock46/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock47" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -0.352478, 0.414917, 11.8995)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock47"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock47/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock48" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -1.90911, 0.414917, 11.7256)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock48"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock48/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock49" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -8.14972, 0.414917, 9.13684)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock49"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock49/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock50" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.248977, 0, 0.968509, 0, 1, 0, -0.968509, 0, -0.248977, -9.20147, 0.414917, 8.02998)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock50"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock50/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock23" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 7.65803, 0.414917, -10.4047)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock23"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock23/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock24" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 8.49228, 0.414917, -9.52132)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock24/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock25" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 9.31589, 0.414917, -8.41574)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock25/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock26" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 3.98203, 0.414917, -12.2661)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock26"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock26/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock27" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 10.1038, 0.414917, -7.06369)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock27"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock27/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock28" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 5.32073, 0.414917, -11.7643)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock28"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock28/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock29" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 6.46356, 0.414917, -11.185)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock29"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock29/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock30" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 10.5814, 0.414917, -5.82868)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock30"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock30/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock31" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.267255, 0, -0.963626, 0, 1, 0, 0.963626, 0, -0.267255, 10.9409, 0.414917, -4.34475)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock31/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock17" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, -4.57089, 0.233691, -12.4663)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock17/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock18" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, -3.4114, 0.307883, -12.8217)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock18/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock19" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, -2.05739, 0.385582, -13.0692)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock19/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock20" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, -0.498197, 0.465524, -13.1756)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock20/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock21" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, 0.819346, 0.521906, -13.0562)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock21/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock22" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(0.745999, -0.0475092, -0.66425, 0, 0.997452, -0.0713408, 0.665947, 0.0532202, 0.744098, 2.30798, 0.574916, -12.7208)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock22"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock22/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock10" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2483, 0.414917, -1.53336)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock10/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock32" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 11.2819, 0.414917, 3.06036)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock32/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock33" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 10.8142, 0.414917, 4.18179)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock33"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock33/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock34" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 10.3968, 0.414917, 5.3839)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock34"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock34/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock35" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 11.487, 0.414917, -1.05494)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock35"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock35/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock36" parent="Rocks" instance=ExtResource("2_bx6fl")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 9.70088, 0.414917, 6.65362)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock36"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock36/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey0f2")
+
+[node name="rock37" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 11.5732, 0.414917, 0.372124)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock37/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock38" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 11.5089, 0.414917, 1.65176)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock38/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock39" parent="Rocks" instance=ExtResource("3_8ct4f")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 9.0838, 0.414917, 7.59231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock39"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock39/StaticBody3D"]
+shape = SubResource("BoxShape3D_25vl6")
+
+[node name="rock40" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 8.02386, 0.414917, 8.85363)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock40"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock40/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="rock41" parent="Rocks" instance=ExtResource("4_6nu8j")]
+transform = Transform3D(-0.989013, 0, -0.147827, 0, 1, 0, 0.147827, 0, -0.989013, 11.3632, 0.414917, -2.62679)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocks/rock41"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks/rock41/StaticBody3D"]
+shape = SubResource("BoxShape3D_ynwta")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19398, 7.75245, 0)
+script = ExtResource("7_8gtgd")
+
+[node name="player" parent="RigidBody3D2" instance=ExtResource("6_er2dc")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.0276117, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106583, 0.0823021, -0.0116615)
+shape = SubResource("BoxShape3D_otb6k")
